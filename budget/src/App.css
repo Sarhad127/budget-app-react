@@ -160,69 +160,158 @@ input:focus {
   color: #333;
 }
 
-/* ---------------- RESPONSIVE ---------------- */
-/* Mobile <600px */
 @media (max-width: 599px) {
   .content {
-    width: 95%;
-    padding: 30px 20px;
+    width: 90%;
+    padding: 25px 15px;
+    margin: 0 auto;
+    box-sizing: border-box;
   }
 
   .app-title {
     font-size: 24px;
+    text-align: center;
+  }
+
+  .bank-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
   }
 
   .bank-form input,
-  .bank-table td input {
+  .bank-form select {
     font-size: 13px;
     padding: 10px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .bank-table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    word-wrap: break-word;
   }
 
   .bank-table th,
   .bank-table td {
     font-size: 13px;
-    padding: 10px;
+    padding: 8px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
   }
 
-  button, .simple-btn, .paid-btn, .delete-btn {
+  .bank-table th:nth-child(1),
+  .bank-table td:nth-child(1) { width: 30%; }
+  .bank-table th:nth-child(2),
+  .bank-table td:nth-child(2) { width: 20%; }
+  .bank-table th:nth-child(3),
+  .bank-table td:nth-child(3) { width: 20%; }
+  .bank-table th:nth-child(4),
+  .bank-table td:nth-child(4) { width: 30%; }
+
+  .bank-table td input {
+    width: 100%;
     font-size: 13px;
-    padding: 8px 12px;
+    padding: 6px;
+    box-sizing: border-box;
+  }
+
+  .bank-table td button, 
+  .simple-btn, .paid-btn, .delete-btn {
+    width: auto;
+    padding: 6px 8px;
+    font-size: 12px;
+    margin-right: 5px;
+    margin: 1px 1px;
+    box-sizing: border-box;
+    white-space: nowrap;
+  }
+
+  .bank-table td {
+    white-space: normal;
   }
 
   .total-amount {
     font-size: 16px;
+    text-align: center;
+    margin-top: 10px;
   }
 }
 
-/* Tablet 600px–900px */
 @media (min-width: 600px) and (max-width: 899px) {
   .content {
-    width: 90%;
-    padding: 40px 30px;
+    width: 80%;
+    padding: 35px 25px;
+    margin: 0 auto;
+    box-sizing: border-box;
   }
 
   .app-title {
     font-size: 26px;
+    text-align: center;
   }
 
   .bank-form input,
-  .bank-table td input {
+  .bank-form select {
     font-size: 14px;
     padding: 11px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .bank-table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    word-wrap: break-word;
   }
 
   .bank-table th,
   .bank-table td {
     font-size: 14px;
-    padding: 12px;
+    padding: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
-  button, .simple-btn, .paid-btn, .delete-btn {
+  .bank-table th:nth-child(1),
+  .bank-table td:nth-child(1) { width: 30%; }
+  .bank-table th:nth-child(2),
+  .bank-table td:nth-child(2) { width: 20%; }
+  .bank-table th:nth-child(3),
+  .bank-table td:nth-child(3) { width: 20%; }
+  .bank-table th:nth-child(4),
+  .bank-table td:nth-child(4) { width: 30%; }
+
+  .bank-table td input {
+    width: 100%;
     font-size: 14px;
-    padding: 9px 12px;
+    padding: 8px;
+    box-sizing: border-box;
+  }
+
+  .bank-table td button,
+  .simple-btn, .paid-btn, .delete-btn {
+    width: auto;
+    padding: 7px 10px;
+    font-size: 13px;
+    margin: 1px 2px;
+    margin-right: 5px;
+    box-sizing: border-box;
+    white-space: nowrap;
+  }
+
+  .bank-table td {
+    white-space: normal;
   }
 
   .total-amount {
     font-size: 17px;
+    margin-top: 8px;
   }
 }
