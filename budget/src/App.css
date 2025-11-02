@@ -2,11 +2,12 @@
 body {
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #edf2f7; /* lite mildare ljusgrå */
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  background: url('./images/background.jpeg') no-repeat center center;
+  background-size: cover;
 }
 
 /* ---------------- CONTAINER ---------------- */
@@ -19,52 +20,55 @@ body {
 
 .content {
   background: #ffffff;
-  padding: 40px 30px;
-  border-radius: 14px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
-  width: 420px;
-  max-width: 90%;
+  padding: 50px 40px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  width: 600px;
+  max-width: 95%;
   text-align: center;
   transition: all 0.3s ease;
 }
 
 h1 {
-  margin-bottom: 25px;
+  margin-bottom: 30px;
   color: #222;
-  font-size: 28px;
-  font-weight: 600;
+  font-size: 30px;
+  font-weight: 700;
 }
 
 /* ---------------- FORM ---------------- */
 .bank-form {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  margin-bottom: 25px;
+  gap: 14px;
+  margin-bottom: 30px;
 }
 
 .bank-form input {
-  padding: 10px;
-  font-size: 14px;
-  border-radius: 8px;
+  padding: 12px;
+  font-size: 15px;
+  border-radius: 10px;
   border: 1px solid #ccc;
-  transition: border 0.2s ease;
+  background-color: #f9f9f9;
+  color: #333;
+  transition: border 0.2s ease, background 0.2s ease;
 }
 
 .bank-form input:focus {
   border-color: #1976d2;
   outline: none;
+  background-color: #fff;
 }
 
 .bank-form button {
-  padding: 12px;
+  padding: 14px;
   background-color: #1976d2;
   color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   cursor: pointer;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 15px;
   transition: background 0.3s ease;
 }
 
@@ -77,45 +81,45 @@ h1 {
   width: 100%;
   border-collapse: collapse;
   color: #333;
-  font-size: 14px;
+  font-size: 15px;
 }
 
 .bank-table th {
   background-color: #1976d2;
   color: white;
-  padding: 12px;
+  padding: 14px;
   text-align: left;
   font-weight: 600;
 }
 
 .bank-table td {
-  padding: 12px;
+  padding: 14px;
   border-bottom: 1px solid #eee;
   color: #333;
 }
 
 .bank-table tr:hover {
-  background-color: #f5f5f5;
+  background-color: #f5f7fa;
   transition: background 0.2s ease;
 }
 
 .no-data {
   text-align: center;
   color: #888;
-  padding: 15px 0;
+  padding: 18px 0;
   font-style: italic;
 }
 
 /* ---------------- BUTTONS ---------------- */
 .paid-btn, .delete-btn {
-  padding: 6px 12px;
+  padding: 7px 14px;
   margin-right: 5px;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   color: white;
   cursor: pointer;
   font-weight: 500;
-  font-size: 13px;
+  font-size: 14px;
   transition: background 0.2s ease;
 }
 
@@ -143,11 +147,12 @@ h1 {
 }
 
 .bank-table td input {
-  width: 60px;
-  padding: 3px;
-  border-radius: 4px;
+  width: 80px;
+  padding: 5px;
+  border-radius: 6px;
   border: 1px solid #ccc;
-  color: white;
+  background-color: #f9f9f9;
+  color: #333;
   font-size: 14px;
   text-align: center;
 }
