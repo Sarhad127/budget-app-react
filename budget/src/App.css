@@ -55,25 +55,41 @@ body {
 }
 
 .bank-form input:focus {
-  border-color: #1976d2;
+  border-color: #999;
   outline: none;
   background-color: #fff;
 }
 
-.bank-form button {
-  padding: 14px;
-  background-color: #1976d2;
-  color: white;
-  border: none;
-  border-radius: 10px;
+/* ---------------- BUTTON STYLES ---------------- */
+button, .simple-btn, .paid-btn, .delete-btn {
+  padding: 10px 14px;
+  margin: 0 2px;
+  background-color: #e0e0e0;
+  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 8px;
   cursor: pointer;
-  font-weight: 600;
-  font-size: 15px;
-  transition: background 0.3s ease;
+  font-weight: 500;
+  font-size: 14px;
+  transition: background 0.2s ease;
 }
 
-.bank-form button:hover {
-  background-color: #125a9c;
+button:hover, .simple-btn:hover, .paid-btn:hover, .delete-btn:hover {
+  background-color: #d6d6d6;
+  border-color: #ccc;
+}
+
+button:focus,
+.simple-btn:focus,
+.paid-btn:focus,
+.delete-btn:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+input:focus {
+  outline: none;
+  box-shadow: none;
 }
 
 /* ---------------- TABLE ---------------- */
@@ -85,8 +101,8 @@ body {
 }
 
 .bank-table th {
-  background-color: #1976d2;
-  color: white;
+  background-color: #f0f0f0;
+  color: #333;
   padding: 14px;
   text-align: left;
   font-weight: 600;
@@ -99,7 +115,7 @@ body {
 }
 
 .bank-table tr:hover {
-  background-color: #f5f7fa;
+  background-color: #f5f5f5;
   transition: background 0.2s ease;
 }
 
@@ -108,35 +124,6 @@ body {
   color: #888;
   padding: 18px 0;
   font-style: italic;
-}
-
-/* ---------------- BUTTONS ---------------- */
-.paid-btn, .delete-btn {
-  padding: 7px 14px;
-  margin-right: 5px;
-  border: none;
-  border-radius: 8px;
-  color: white;
-  cursor: pointer;
-  font-weight: 500;
-  font-size: 14px;
-  transition: background 0.2s ease;
-}
-
-.paid-btn {
-  background-color: #4caf50;
-}
-
-.paid-btn:hover {
-  background-color: #3d8b40;
-}
-
-.delete-btn {
-  background-color: #e53935;
-}
-
-.delete-btn:hover {
-  background-color: #c62828;
 }
 
 /* ---------------- EDITABLE CELL ---------------- */
@@ -157,6 +144,7 @@ body {
   text-align: center;
 }
 
+/* ---------------- TOTAL ---------------- */
 .total-amount {
   margin-top: 20px;
   font-weight: 600;

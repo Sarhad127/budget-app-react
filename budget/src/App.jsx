@@ -28,7 +28,10 @@ function App() {
   };
 
   const handleDelete = (id) => {
-    setBanks(banks.filter((b) => b.id !== id));
+    const bank = banks.find(b => b.id === id);
+    if (window.confirm(`Är du säker på att du vill radera "${bank.name}"?`)) {
+      setBanks(banks.filter((b) => b.id !== id));
+    }
   };
 
   const handleCostChange = (id, newCost) => {
@@ -37,10 +40,36 @@ function App() {
     );
   };
 
+  const handleClearAll = () => {
+    if (banks.length === 0) return;
+    if (window.confirm("Är du säker på att du vill radera ALLA fakturor?")) {
+      setBanks([]);
+    }
+  };
+
+  const handleExportCSV = () => {
+    if (banks.length === 0) return;
+
+    const headers = ["Banknamn", "Totalt kvar", "Månadsbelopp"];
+    const rows = banks.map(b => [b.name, b.total, b.cost]);
+
+    let csvContent = "data:text/csv;charset=utf-8," 
+      + headers.join(",") + "\n" 
+      + rows.map(r => r.join(",")).join("\n");
+
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", "budget.csv");
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <div className="app-container">
       <div className="content">
-       <h1 className="app-title">Budgetkalkylen</h1>
+        <h1 className="app-title">Budgetkalkylen</h1>
         <BankForm onAddBank={addBank} />
         <BankTable
           banks={banks}
@@ -48,6 +77,10 @@ function App() {
           onDelete={handleDelete}
           onCostChange={handleCostChange}
         />
+          <div >
+          <button className="simple-btn" onClick={handleClearAll}>Rensa allt</button>
+          <button className="simple-btn" onClick={handleExportCSV}>Exportera CSV</button>
+        </div>
       </div>
     </div>
   );
