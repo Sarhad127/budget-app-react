@@ -40,7 +40,7 @@ function App() {
   return (
     <div className="app-container">
       <div className="content">
-        <h1>💰 Budget Tracker</h1>
+       <h1 className="app-title">Budgetkalkylen</h1>
         <BankForm onAddBank={addBank} />
         <BankTable
           banks={banks}
