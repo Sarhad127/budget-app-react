@@ -126,6 +126,13 @@ input:focus {
   font-style: italic;
 }
 
+.bank-table th, .bank-table td {
+  max-width: 150px;  
+  white-space: nowrap;    
+  overflow: hidden;   
+  text-overflow: ellipsis;  
+}
+
 /* ---------------- EDITABLE CELL ---------------- */
 .bank-table td span {
   cursor: pointer;
@@ -151,4 +158,71 @@ input:focus {
   font-size: 18px;
   text-align: right;
   color: #333;
+}
+
+/* ---------------- RESPONSIVE ---------------- */
+/* Mobile <600px */
+@media (max-width: 599px) {
+  .content {
+    width: 95%;
+    padding: 30px 20px;
+  }
+
+  .app-title {
+    font-size: 24px;
+  }
+
+  .bank-form input,
+  .bank-table td input {
+    font-size: 13px;
+    padding: 10px;
+  }
+
+  .bank-table th,
+  .bank-table td {
+    font-size: 13px;
+    padding: 10px;
+  }
+
+  button, .simple-btn, .paid-btn, .delete-btn {
+    font-size: 13px;
+    padding: 8px 12px;
+  }
+
+  .total-amount {
+    font-size: 16px;
+  }
+}
+
+/* Tablet 600px–900px */
+@media (min-width: 600px) and (max-width: 899px) {
+  .content {
+    width: 90%;
+    padding: 40px 30px;
+  }
+
+  .app-title {
+    font-size: 26px;
+  }
+
+  .bank-form input,
+  .bank-table td input {
+    font-size: 14px;
+    padding: 11px;
+  }
+
+  .bank-table th,
+  .bank-table td {
+    font-size: 14px;
+    padding: 12px;
+  }
+
+  button, .simple-btn, .paid-btn, .delete-btn {
+    font-size: 14px;
+    padding: 9px 12px;
+  }
+
+  .total-amount {
+    font-size: 17px;
+  }
 }

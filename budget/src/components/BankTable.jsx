@@ -23,6 +23,7 @@ function BankTable({ banks, onPaid, onDelete, onCostChange }) {
   };
 
   const totalAmount = banks.reduce((sum, bank) => sum + bank.total, 0);
+  const totalMonthly = banks.reduce((sum, bank) => sum + bank.cost, 0);
 
   return (
     <div>
@@ -64,10 +65,7 @@ function BankTable({ banks, onPaid, onDelete, onCostChange }) {
                   )}
                 </td>
                 <td>
-                  <button
-                    className="paid-btn"
-                    onClick={() => onPaid(bank.id)}
-                  >
+                  <button className="paid-btn" onClick={() => onPaid(bank.id)}>
                     Betald
                   </button>
                   <button
@@ -81,6 +79,16 @@ function BankTable({ banks, onPaid, onDelete, onCostChange }) {
             ))
           )}
         </tbody>
+        {banks.length > 0 && (
+          <tfoot>
+            <tr>
+              <td style={{ fontWeight: "600" }}>Totalt</td>
+              <td style={{ fontWeight: "600" }}>{totalAmount.toFixed(2)}</td>
+              <td style={{ fontWeight: "600" }}>{totalMonthly.toFixed(2)}</td>
+              <td></td>
+            </tr>
+          </tfoot>
+        )}
       </table>
       <div className="total-amount">
         Totalt kvar: {totalAmount.toFixed(2)} kr
