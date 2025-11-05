@@ -1,8 +1,11 @@
-A simple budget app where the user can type in the name of the bank or payment and the total amount left aswell as the monthly pay, it calculates and shows the amount left when pressing the button payed. All data saved to localstorage.
+Project Description:
+A simple budget app where the user can enter the name of a bank or payment, the total amount remaining, and the monthly payment. The app calculates and displays the remaining amount when the “Paid” button is pressed. All data is saved to local storage.
 
-USER CAN:
-add payments, 
-delete payments, 
-edit payments,
-pay and export the payments to csv,
-calculate total amount left
+Features:
+
+* Add payments
+* Delete payments
+* Edit payments
+* Mark payments as paid
+* Export payments to CSV
+* Calculate total amount remaining
