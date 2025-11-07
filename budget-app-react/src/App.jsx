@@ -40,6 +40,12 @@ function App() {
     );
   };
 
+  const handleTotalChange = (id, newTotal) => {
+    setBanks((prev) =>
+      prev.map((bank) => (bank.id === id ? { ...bank, total: newTotal } : bank))
+    );
+  };
+
   const handleClearAll = () => {
     if (banks.length === 0) return;
     if (window.confirm("Är du säker på att du vill radera ALLA fakturor?")) {
@@ -76,6 +82,7 @@ function App() {
           onPaid={handlePaid}
           onDelete={handleDelete}
           onCostChange={handleCostChange}
+          onTotalChange={handleTotalChange}
         />
           <div >
           <button className="simple-btn" onClick={handleClearAll}>Rensa allt</button>

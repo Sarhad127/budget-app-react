@@ -1,24 +1,38 @@
 import { useState } from "react";
 
-function BankTable({ banks, onPaid, onDelete, onCostChange }) {
-  const [editingId, setEditingId] = useState(null);
+function BankTable({ banks, onPaid, onDelete, onCostChange, onTotalChange }) {
+  const [editingCostId, setEditingCostId] = useState(null);
+  const [editingTotalId, setEditingTotalId] = useState(null);
   const [newCost, setNewCost] = useState("");
+  const [newTotal, setNewTotal] = useState("");
 
-  const handleEditClick = (bank) => {
-    setEditingId(bank.id);
+  const handleEditCost = (bank) => {
+    setEditingCostId(bank.id);
     setNewCost(bank.cost);
   };
 
-  const handleSave = (id) => {
+  const handleEditTotal = (bank) => {
+    setEditingTotalId(bank.id);
+    setNewTotal(bank.total);
+  };
+
+  const handleSaveCost = (id) => {
     if (!isNaN(newCost) && newCost !== "") {
       onCostChange(id, parseFloat(newCost));
     }
-    setEditingId(null);
+    setEditingCostId(null);
   };
 
-  const handleKeyDown = (e, id) => {
+  const handleSaveTotal = (id) => {
+    if (!isNaN(newTotal) && newTotal !== "") {
+      onTotalChange(id, parseFloat(newTotal));
+    }
+    setEditingTotalId(null);
+  };
+
+  const handleKeyDown = (e, id, type) => {
     if (e.key === "Enter") {
-      handleSave(id);
+      type === "cost" ? handleSaveCost(id) : handleSaveTotal(id);
     }
   };
 
@@ -47,23 +61,43 @@ function BankTable({ banks, onPaid, onDelete, onCostChange }) {
             banks.map((bank) => (
               <tr key={bank.id}>
                 <td>{bank.name}</td>
-                <td>{bank.total.toFixed(2)}</td>
+
+                {/* Totalt kvar */}
                 <td>
-                  {editingId === bank.id ? (
+                  {editingTotalId === bank.id ? (
+                    <input
+                      type="number"
+                      value={newTotal}
+                      autoFocus
+                      onChange={(e) => setNewTotal(e.target.value)}
+                      onBlur={() => handleSaveTotal(bank.id)}
+                      onKeyDown={(e) => handleKeyDown(e, bank.id, "total")}
+                    />
+                  ) : (
+                    <span onClick={() => handleEditTotal(bank)}>
+                      {bank.total.toFixed(2)}
+                    </span>
+                  )}
+                </td>
+
+                {/* Månadsbelopp */}
+                <td>
+                  {editingCostId === bank.id ? (
                     <input
                       type="number"
                       value={newCost}
                       autoFocus
                       onChange={(e) => setNewCost(e.target.value)}
-                      onBlur={() => handleSave(bank.id)}
-                      onKeyDown={(e) => handleKeyDown(e, bank.id)}
+                      onBlur={() => handleSaveCost(bank.id)}
+                      onKeyDown={(e) => handleKeyDown(e, bank.id, "cost")}
                     />
                   ) : (
-                    <span onClick={() => handleEditClick(bank)}>
+                    <span onClick={() => handleEditCost(bank)}>
                       {bank.cost.toFixed(2)}
                     </span>
                   )}
                 </td>
+
                 <td>
                   <button className="paid-btn" onClick={() => onPaid(bank.id)}>
                     Betald
@@ -79,6 +113,7 @@ function BankTable({ banks, onPaid, onDelete, onCostChange }) {
             ))
           )}
         </tbody>
+
         {banks.length > 0 && (
           <tfoot>
             <tr>
@@ -90,9 +125,7 @@ function BankTable({ banks, onPaid, onDelete, onCostChange }) {
           </tfoot>
         )}
       </table>
-      <div className="total-amount">
-        Totalt kvar: {totalAmount.toFixed(2)} kr
-      </div>
+      <div className="total-amount">Totalt kvar: {totalAmount.toFixed(2)} kr</div>
     </div>
   );
 }
